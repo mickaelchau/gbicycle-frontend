@@ -1,5 +1,5 @@
 console.log("heloo")
-fetch('https://get-datastore-entity-r4yqmr3v3q-uc.a.run.app/data/customer1')
+fetch('https://get-datastore-entity-r4yqmr3v3q-uc.a.run.app/')
   .then(response => response.text())
   .then(data => {
     // use the data to do something in the front-end
