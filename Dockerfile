@@ -1,7 +1,22 @@
-FROM nginx
 
-COPY nginx.conf /etc/nginx/
 
-COPY . /usr/share/nginx/html
+# Use a Node.js base image
+FROM node:16
 
-RUN ls /usr/share/nginx/html
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the package.json file to the container
+COPY package*.json ./
+
+# Install the dependencies
+RUN npm install
+
+# Copy the rest of the application files to the container
+COPY . .
+
+# Expose the default Express.js port
+EXPOSE 8080
+
+# Set the command to start the Express.js server
+CMD ["node", "main.js"]
