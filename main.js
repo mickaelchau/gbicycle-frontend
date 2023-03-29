@@ -10,20 +10,20 @@ const port = process.env.PORT || 8080;
 
 // Define a route to serve the index.html file
 app.get('/', async (req, res) => {
-    const bicycleId = req.query.session_id;
+    const userId = req.query.session_id;
     const data = await fetchdata();
     console.log("userId", data.userId);
-    if (bicycleId === undefined) {
-        res.sendFile(path.join(__dirname, 'invalid_argument.html'));
+    if (userId === undefined) {
+        res.sendFile(path.join(__dirname, 'invalid_user.html'));
     }
-    else if (data.pedal && data.userId === bicycleId) {
+    else if (data.pedal && data.userId === userId) {
         res.sendFile(path.join(__dirname, 'roule.html'));
     }
-    else if (data.userId === bicycleId) {
+    else if (data.userId === userId) {
         res.sendFile(path.join(__dirname, 'no_movement.html'));
     }
     else {
-        res.sendFile(path.join(__dirname, 'bicyle_does_not_exist.html'));
+        res.sendFile(path.join(__dirname, 'user_does_not_exist.html'));
     }
 });
 
