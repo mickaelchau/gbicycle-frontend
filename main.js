@@ -12,6 +12,7 @@ const port = process.env.PORT || 8080;
 app.get('/', async (req, res) => {
     const userId = req.query.user_id;
     const bicycleId = req.query.bicycle_id;
+    console.log("bicycleId", bicycleId);
     const data = await fetchdata(bicycleId);
     console.log("userId", data.userId);
     if (userId === undefined) {
