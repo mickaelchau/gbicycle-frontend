@@ -11,6 +11,7 @@ const port = process.env.PORT || 8080;
 // Define a route to serve the index.html file
 app.get('/', async (req, res) => {
     const userId = req.query.user_id;
+    console.log("userId", userId);
     const bicycleId = req.query.bicycle_id;
     console.log("bicycleId", bicycleId);
     const data = await fetchdata(bicycleId);
