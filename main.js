@@ -10,8 +10,9 @@ const port = process.env.PORT || 8080;
 
 // Define a route to serve the index.html file
 app.get('/', async (req, res) => {
-    const userId = req.query.session_id;
-    const data = await fetchdata();
+    const userId = req.query.user_id;
+    const bicycleId = req.query.bicycle_id;
+    const data = await fetchdata(bicycleId);
     console.log("userId", data.userId);
     if (userId === undefined) {
         res.sendFile(path.join(__dirname, 'invalid_user.html'));
